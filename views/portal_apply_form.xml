@@ -1,0 +1,23 @@
+<odoo>
+  <template id="portal_apply_form" name="Solliciteer">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <h2>Nieuwe Sollicitatie</h2>
+          <form action="/my/apply/submit" method="post">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <div class="form-group">
+            <label for="job_id">Kies een functie:</label>
+            <select name="job_id" class="form-control" required="required">
+              <t t-foreach="jobs" t-as="job">
+                <option t-att-value="job.id"><t t-esc="job.name"/></option>
+              </t>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">
+            <i class="fa fa-paper-plane"/> Solliciteer
+          </button>
+        </form>
+      </div>
+    </t>
+  </template>
+</odoo>

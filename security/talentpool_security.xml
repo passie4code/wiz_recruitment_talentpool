@@ -1,0 +1,24 @@
+<odoo>
+  <data noupdate="0">
+
+    <!-- Eigen modulecategorie -->
+    <record id="module_category_talentpool" model="ir.module.category">
+      <field name="name">Recruitment Talent Pool</field>
+      <field name="description">Beheer van talenten en sollicitaties</field>
+      <field name="sequence">15</field>
+    </record>
+
+    <!-- Gebruikersgroep: Talent Pool Gebruiker -->
+    <record id="group_talentpool_user" model="res.groups">
+      <field name="name">Talent Pool Gebruiker</field>
+      <field name="category_id" ref="wiz_recruitment_talentpool.module_category_talentpool"/>
+    </record>
+
+    <!-- Gebruikersgroep: Talent Pool Manager -->
+    <record id="group_talentpool_manager" model="res.groups">
+      <field name="name">Talent Pool Manager</field>
+      <field name="category_id" ref="wiz_recruitment_talentpool.module_category_talentpool"/>
+    </record>
+
+  </data>
+</odoo>

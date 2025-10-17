@@ -1,0 +1,41 @@
+<odoo>
+  <template id="portal_talent_menu" inherit_id="portal.portal_my_home" name="Talent Menu">
+    <xpath expr="//div[@id='portal_common_category']" position="inside">
+      <t t-set="config_card" t-value="True"/>
+      
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="icon" t-value="'/wiz_recruitment_talentpool/static/img/Talent-icon.svg'"/>
+        <t t-set="title">Mijn Talentprofiel</t>
+        <t t-set="text">Bekijk en bewerk je talentgegevens en wensen</t>
+        <t t-set="url" t-value="'/my/talent'"/>
+      </t>
+
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="icon" t-value="'/wiz_recruitment_talentpool/static/img/application-icon.svg'"/>
+        <t t-set="title">Mijn Sollicitaties</t>
+        <t t-set="text">Overzicht van je actieve sollicitaties</t>
+        <t t-set="url" t-value="'/my/applications'"/>
+      </t>
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="icon" t-value="'/wiz_recruitment_talentpool/static/img/education-icon.svg'"/>
+        <t t-set="title">Mijn Opleidingen</t>
+        <t t-set="text">Overzicht van gevolgde opleidingen</t>
+        <t t-set="url" t-value="'/my/education'"/>
+      </t>
+
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="icon" t-value="'/wiz_recruitment_talentpool/static/img/experience-icon.svg'"/>
+        <t t-set="title">Mijn Werkervaring</t>
+        <t t-set="text">Historiek van werkgevers en functies</t>
+        <t t-set="url" t-value="'/my/experience'"/>
+      </t>
+
+      <t t-call="portal.portal_docs_entry">
+        <t t-set="icon" t-value="'/wiz_recruitment_talentpool/static/img/skill-icon.svg'"/>
+        <t t-set="title">Mijn Skills</t>
+        <t t-set="text">Overzicht van je vaardigheden</t>
+        <t t-set="url" t-value="'/my/skills'"/>
+      </t>
+    </xpath>
+  </template>
+</odoo>

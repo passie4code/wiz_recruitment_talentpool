@@ -1,0 +1,41 @@
+<odoo>
+  <template id="portal_experience_edit" name="Werkervaring bewerken">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <h2>💼 Mijn Werkervaring bewerken</h2>
+        <form action="/my/experience/update" method="post">
+          <t t-foreach="experiences" t-as="exp">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">#<t t-esc="exp.id"/> – <t t-esc="exp.name"/></h5>
+                <input type="hidden" name="exp_ids" t-att-value="exp.id"/>
+
+                <div class="form-group">
+                  <label>Functie</label>
+                  <input type="text" name="name_<t t-esc="exp.id"/>" t-att-value="exp.name" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label>Bedrijf</label>
+                  <input type="text" name="company_<t t-esc="exp.id"/>" t-att-value="exp.company" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label>Startdatum</label>
+                  <input type="date" name="start_<t t-esc="exp.id"/>" t-att-value="exp.start_date" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label>Einddatum</label>
+                  <input type="date" name="end_<t t-esc="exp.id"/>" t-att-value="exp.end_date" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label>Beschrijving</label>
+                  <textarea name="desc_<t t-esc="exp.id"/>" class="form-control"><t t-esc="exp.description"/></textarea>
+                </div>
+              </div>
+            </div>
+          </t>
+          <button type="submit" class="btn btn-primary">Alles opslaan</button>
+        </form>
+      </div>
+    </t>
+  </template>
+</odoo>

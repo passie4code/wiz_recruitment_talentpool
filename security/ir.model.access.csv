@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_talent_user,talent.user,model_wiz_recruitment_talentpool_talent,wiz_recruitment_talentpool.group_talentpool_user,1,1,1,0
+access_talent_manager,talent.manager,model_wiz_recruitment_talentpool_talent,wiz_recruitment_talentpool.group_talentpool_manager,1,1,1,1
+access_dashboard_user,dashboard.user,model_wiz_recruitment_talentpool_dashboard,wiz_recruitment_talentpool.group_talentpool_user,1,0,0,0
+access_education_portal,recruitment.education portal,recruitment_education,base.group_portal,1,1,1,0
+access_education_user,recruitment.education user,recruitment_education,wiz_recruitment_talentpool.group_talentpool_user,1,1,1,0
+access_education_manager,recruitment.education manager,recruitment_education,wiz_recruitment_talentpool.group_talentpool_manager,1,1,1,1

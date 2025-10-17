@@ -1,0 +1,32 @@
+<odoo>
+  <template id="portal_experience_add" name="Werkervaring toevoegen">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <h2>💼 Nieuwe werkervaring toevoegen</h2>
+        <form action="/my/experience/add/submit" method="post">
+          <div class="form-group">
+            <label>Functie</label>
+            <input type="text" name="name" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Bedrijf</label>
+            <input type="text" name="company" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Startdatum</label>
+            <input type="date" name="start_date" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Einddatum</label>
+            <input type="date" name="end_date" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Beschrijving</label>
+            <textarea name="description" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Opslaan</button>
+        </form>
+      </div>
+    </t>
+  </template>
+</odoo>

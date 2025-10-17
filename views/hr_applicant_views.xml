@@ -1,0 +1,26 @@
+<odoo>
+  <!-- Formulierknop -->
+  <record id="view_applicant_form_inherit_talent" model="ir.ui.view">
+    <field name="name">hr.applicant.form.inherit.talent</field>
+    <field name="model">hr.applicant</field>
+    <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <button name="action_convert_to_talent" type="object" string="Zet om naar Talent" class="btn-primary"
+                if="not talent_id"/>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- Bulkactie -->
+  <record id="action_bulk_convert_to_talent" model="ir.actions.server">
+    <field name="name">Zet sollicitant(en) over naar Talentpool</field>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="binding_view_types">list</field>
+    <field name="state">code</field>
+    <field name="code">
+      action = env["hr.applicant"].browse(env.context.get("active_ids")).action_bulk_convert_to_talent()
+    </field>
+  </record>
+</odoo>

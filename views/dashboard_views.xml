@@ -1,0 +1,22 @@
+<odoo>
+  <record id="action_talentpool_dashboard" model="ir.actions.act_window">
+    <field name="name">Recruitment Dashboard</field>
+    <field name="res_model">wiz.recruitment.talentpool.dashboard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+
+  <record id="view_talentpool_dashboard" model="ir.ui.view">
+    <field name="name">wiz.recruitment.talentpool.dashboard.form</field>
+    <field name="model">wiz.recruitment.talentpool.dashboard</field>
+    <field name="arch" type="xml">
+      <form string="Recruitment Dashboard">
+        <sheet>
+          <group>
+            <div class="o_form_label">Hier komt het dashboard met KPI's en grafieken</div>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+  <template id="portal_applications" name="Mijn Sollicitaties">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <h2>Mijn Sollicitaties</h2>
+
+        <!-- ✅ Knop om nieuwe sollicitatie te starten -->
+        <a href="/my/apply" class="btn btn-success mb-3">
+          <i class="fa fa-plus"/> Nieuwe sollicitatie starten
+        </a>
+
+        <!-- ✅ Overzicht in tabelvorm -->
+        <t t-if="applications">
+          <table id="applications-table" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Sollicitatie</th>
+                <th>Functie</th>
+                <th>Status</th>
+                <th>Recruiter</th>
+                <th>Datum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="applications" t-as="app">
+                <tr>
+                  <td><t t-esc="app.name"/></td>
+                  <td><t t-esc="app.job_id.name or '-'"/></td>
+                  <td><t t-esc="app.stage_id.name or '-'"/></td>
+                  <td><t t-esc="app.user_id.name or 'Nog geen recruiter'"/></td>
+                  <td><t t-esc="app.create_date.strftime('%d-%m-%Y') if app.create_date else '-'"/></td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+        </t>
+
+        <!-- ✅ Fallback als er geen sollicitaties zijn -->
+        <t t-else="">
+          <p>Je hebt momenteel geen actieve sollicitaties.</p>
+        </t>
+      </div>
+
+      <!-- ✅ Sortering op kolommen -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+          const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+            v1 !== '' &amp;&amp; v2 !== '' &amp;&amp; !isNaN(v1) &amp;&amp; !isNaN(v2)
+              ? v1 - v2
+              : v1.toString().localeCompare(v2)
+          )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+          document.querySelectorAll('#applications-table th').forEach(th => th.addEventListener('click', (() => {
+            const table = th.closest('table');
+            Array.from(table.querySelectorAll('tbody tr'))
+              .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+              .forEach(tr => table.querySelector('tbody').appendChild(tr));
+          })));
+        });
+      </script>
+    </t>
+  </template>
+</odoo>

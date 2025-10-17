@@ -1,0 +1,36 @@
+<odoo>
+  <template id="portal_skills" name="Mijn Skills">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <h2>🛠️ Mijn Skills</h2>
+        <a href="/my/skills/add" class="btn btn-success mb-3">Nieuwe skill toevoegen</a>
+
+        <t t-if="skills">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Niveau</th>
+                <th>Acties</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="skills" t-as="skill">
+                <tr>
+                  <td><t t-esc="skill.name"/></td>
+                  <td><t t-esc="dict(skill.fields_get()['level']['selection'])[skill.level]"/></td>
+                  <td>
+                    <a t-att-href="'/my/skills/edit/%s' % skill.id">Wijzig</a>
+                  </td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+        </t>
+        <t t-else="">
+          <p>Je hebt nog geen skills toegevoegd.</p>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>

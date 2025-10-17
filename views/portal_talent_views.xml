@@ -1,0 +1,108 @@
+<odoo>
+  <template id="portal_talent_profile" name="Mijn Talentprofiel">
+    <t t-call="portal.portal_layout">
+      <div class="o_portal_container">
+        <!-- Mijn Talentenprofiel -->
+        <h2>Mijn Talentprofiel</h2>
+
+        <t t-if="talent">
+          <form action="/my/talent/update" method="post">
+            <div class="form-group">
+              <label>Ik ben op zoek naar:</label>
+              <textarea name="searching_for" class="form-control"><t t-esc="talent.searching_for"/></textarea>
+            </div>
+            <div class="form-group">
+              <label>Wat ik niet wens:</label>
+              <textarea name="not_wanted" class="form-control"><t t-esc="talent.not_wanted"/></textarea>
+            </div>
+            <div class="form-group">
+              <label>Overige opmerkingen:</label>
+              <textarea name="notes" class="form-control"><t t-esc="talent.notes"/></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Opslaan</button>
+          </form>
+
+          <hr/>
+
+          <!-- Mijn sollicitaties -->
+          <h3>Mijn sollicitaties</h3>
+          <ul>
+            <t t-foreach="applications" t-as="app">
+              <li>
+                <strong><t t-esc="app.name"/></strong> – <t t-esc="app.job_id.name"/> – <t t-esc="app.stage_id.name"/>
+              </li>
+            </t>
+          </ul>
+          <hr/>
+
+          <!-- Mijn Opleidingen -->
+          <t t-if="educations">
+            <h4>Mijn Opleidingen</h4>
+            <div class="row">
+              <t t-foreach="educations" t-as="edu">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><t t-esc="edu.name"/></h5>
+                      <p class="card-text">
+                        <strong>Instelling:</strong> <t t-esc="edu.institution"/><br/>
+                        <strong>Periode:</strong> <t t-esc="edu.date_start"/> – <t t-esc="edu.date_end"/><br/>
+                        <strong>Diploma:</strong> <t t-esc="edu.degree"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </t>
+            </div>
+          </t>
+
+          <!-- Mijn Werkloopbaan -->
+          <t t-if="experiences">
+            <h5>Mijn Werkloopbaan</h5>
+            <div class="row">
+              <t t-foreach="experiences" t-as="exp">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><t t-esc="exp.company_name"/></h5>
+                      <p class="card-text">
+                        <strong>Functie:</strong> <t t-esc="exp.job_title"/><br/>
+                        <strong>Periode:</strong> <t t-esc="exp.date_start"/> – <t t-esc="exp.date_end"/><br/>
+                        <strong>Beschrijving:</strong> <t t-esc="exp.description"/>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </t>
+            </div>
+          </t>
+
+          <!-- Mijn Skills -->
+          <t t-if="skills">
+            <h6>Mijn Skills</h6>
+            <div class="row">
+              <t t-foreach="skills" t-as="skill">
+                <div class="col-md-3 mb-3">
+                  <div class="card border-info">
+                    <div class="card-body">
+                      <h6 class="card-title"><t t-esc="skill.name"/></h6>
+                      <p class="card-text">
+                        <strong>Niveau:</strong> <t t-esc="skill.level"/><br/>
+                        <strong>Context:</strong>
+                        <t t-if="skill.context"><t t-esc="skill.context"/></t>
+                        <t t-else="">-</t>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </t>
+            </div>
+          </t>
+        </t>
+        <t t-else="">
+          <p>Er is nog geen talentprofiel aan jouw account gekoppeld.</p>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>

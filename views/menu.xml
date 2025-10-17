@@ -1,0 +1,5 @@
+<odoo>
+  <menuitem id="menu_talentpool_root" name="Talent Pool" parent="hr_recruitment.menu_hr_recruitment_root" groups="wiz_recruitment_talentpool.group_talentpool_user,wiz_recruitment_talentpool.group_talentpool_manager"/>
+  <menuitem id="menu_talentpool_dashboard" name="Dashboard" parent="menu_talentpool_root" action="action_talentpool_dashboard"/>
+  <menuitem id="menu_talentpool_talents" name="Talenten" parent="menu_talentpool_root" action="action_talentpool_talents"/>
+</odoo>
